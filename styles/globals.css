@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --primary-color: #14532d;
   --primary-dark: #0d3a20;
@@ -16,6 +17,12 @@
   --maxw: 1200px;
   --font-heading: var(--font-heading-next), var(--font-bangla-heading-next), "Noto Serif Bengali", "Hind Siliguri", Georgia, serif;
   --font-body: var(--font-body-next), var(--font-bangla-next), "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+=======
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,500;1,800;1,900&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
+:root {
+  --primary-color: #e49e48;
+  --secondary-color: #59330e;
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 
 html,
@@ -23,6 +30,7 @@ body {
   scroll-behavior: smooth;
 }
 body {
+<<<<<<< HEAD
   font-family: var(--font-body);
   background-color: var(--surface);
   color: var(--text-color);
@@ -34,6 +42,9 @@ body {
    descendants actually consume Inter / Hind Siliguri (zero layout shift) */
 .app-fonts {
   font-family: var(--font-body);
+=======
+  font-family: "Exo", sans-serif;
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 a {
   text-decoration: none;
@@ -146,10 +157,15 @@ ul.demo li {
   font-weight: 500;
   line-height: 2;
 }
+<<<<<<< HEAD
+=======
+/* style from influencer */
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 html,
 body {
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
   font-family: var(--font-body);
 }
 h1 {
@@ -190,6 +206,51 @@ button {
 }
 ul li {
   font-family: var(--font-body);
+=======
+
+  font-family: "Abhaya Libre", "Mulish", "Pacifico";
+  font-weight: 700 !important;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  /* font-family: 'Abhaya Libre', serif;
+     font-family: 'Mulish', sans-serif;
+      font-family: 'Pacifico', cursive; */
+}
+h1 {
+  font-family: "Abhaya Libre", "Mulish";
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px; /* or 125% */
+  color: #333333;
+}
+h2 {
+  font-family: "Abhaya Libre";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 40px;
+  /* identical to box height, or 160% */
+
+  letter-spacing: 1px;
+
+  color: #333333;
+}
+p {
+  font-family: "Mulish";
+  color: #2b2b2b;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+button {
+  font-family: "Mulish" !important;
+}
+ul li {
+  font-family: "Mulish";
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 
 .cardImage {
@@ -241,6 +302,7 @@ ul li {
 nav .cus-li-black .navbar-nav .nav-link,
 .offcanvas-body .navbar-nav .nav-item a,
 .nav-link {
+<<<<<<< HEAD
   color: var(--text-color) !important;
 
   font-size: 17px;
@@ -253,6 +315,18 @@ nav .cus-li-black .navbar-nav .nav-link,
 .cus-li-black .nav-link,
 .cus-li-black sup {
   color: var(--text-color) !important;
+=======
+  color: #2b2b2b !important;
+
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  /* padding: 4px 12px; */
+}
+.cus-li-black .nav-link,
+.cus-li-black sup {
+  color: #2b2b2b !important;
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 
 .cus-li-white .nav-link,
@@ -266,6 +340,7 @@ nav a:hover,
 .nav-link:hover,
 .dropdown-menu .dropdown-item a:hover {
   color: var(--primary-color) !important;
+<<<<<<< HEAD
   background-color: rgba(20, 83, 45, 0.06);
 }
 
@@ -275,6 +350,13 @@ nav a:hover,
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft-lg);
   padding: 6px;
+=======
+}
+
+.dropdown-menu {
+  background-color: transparent;
+  border: none;
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
   z-index: 100;
 }
 .dropdown-item {
@@ -282,11 +364,15 @@ nav a:hover,
   margin-bottom: 3px;
   color: #fff;
   font-weight: 400;
+<<<<<<< HEAD
   border-radius: 6px;
   transition: background-color 0.2s ease;
 }
 .dropdown-item:hover {
   background-color: var(--secondary-color) !important;
+=======
+  border-radius: 3px;
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 li:focus,
 li:active {
@@ -414,6 +500,7 @@ table tr td span {
 } */
 
 .active-li {
+<<<<<<< HEAD
   border-bottom: 3px solid var(--accent-gold);
   transition: border-color 0.3s ease-in-out;
 }
@@ -478,6 +565,11 @@ nav.navbar.navbar-scrolled {
 .text-success {
   color: var(--primary-color) !important;
 }
+=======
+  border-bottom: 3px solid #0b9444;
+  transition: border-color 0.3s ease-in-out;
+}
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 
 @media (max-width: 575.98px) {
   /* CSS rules for extra small screens */
@@ -508,11 +600,19 @@ nav.navbar.navbar-scrolled {
 }
 
 .footer-card {
+<<<<<<< HEAD
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-lg);
   width: 270px;
   text-align: center;
   box-shadow: var(--shadow-soft-lg);
+=======
+  border: 1px solid #fff;
+  border-radius: 12px;
+  width: 270px;
+  text-align: center;
+  /* margin: auto; */
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 
 /* Custom file upload  style  */
@@ -693,6 +793,7 @@ nav.navbar.navbar-scrolled {
     overflow-x: scroll;
   }
 }
+<<<<<<< HEAD
 
 /* =====================================================================
    HOME / INSTITUTIONAL DESIGN SYSTEM  (presentation layer only)
@@ -2150,3 +2251,5 @@ button {
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
+=======
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b

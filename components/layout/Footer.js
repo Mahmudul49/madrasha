@@ -175,10 +175,17 @@ const Footer = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <Container fluid className="p-4 mt-3 site-footer">
       <Row>
         <Col md={3} sm={12}>
           <Image className="w-50 footer-logo" src="logo2.png" alt="logo" />
+=======
+    <Container fluid className="p-4 bg-light mt-3" style={{ backgroundColor: "#F3F3F3" }}>
+      <Row>
+        <Col md={3} sm={12}>
+          <Image className="w-50" src="logo2.png" alt="logo" />
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
           <p className="text-sm my-3 w-100 text-justify">
             একটি ইসলামী শিক্ষা প্রতিষ্ঠান, যা শিশুদের মধ্যে ধর্মীয় শিক্ষা ও
             নৈতিক মূল্যবোধের প্রতি সচেতনতা সৃষ্টি করতে কাজ করে। আমাদের উদ্দেশ্য

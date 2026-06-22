@@ -24,9 +24,14 @@ export default function Gallery() {
   const currentImages = images.slice(startIndex, startIndex + IMAGES_PER_PAGE);
 
   return (
+<<<<<<< HEAD
     <section id="gallery" className="section section--surface">
       <div className="container-1200">
         <span className="section-ornament" aria-hidden="true"></span>
+=======
+    <section id="gallery" className="bg-light py-5">
+      <div className="container">
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
         <h2 className="section-title mb-4 text-center">ছবির গ্যালারি</h2>
 
         <Row className="g-3">

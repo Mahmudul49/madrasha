@@ -107,6 +107,7 @@ const HeroBanner = ({ name }) => {
   return (
     <div
       id="heroCarousel"
+<<<<<<< HEAD
       className="carousel slide hero-carousel"
       data-bs-ride="carousel"
     >
@@ -125,6 +126,11 @@ const HeroBanner = ({ name }) => {
           ))}
         </div>
       )}
+=======
+      className="carousel slide"
+      data-bs-ride="carousel"
+    >
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
       <div className="carousel-inner">
         {currentSlides.map((slide, index) => (
           <motion.div
@@ -136,7 +142,11 @@ const HeroBanner = ({ name }) => {
             transition={{ duration: 1 }}
           >
             <div
+<<<<<<< HEAD
               className="position-relative hero-slide"
+=======
+              className="position-relative"
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: "cover",
@@ -145,7 +155,14 @@ const HeroBanner = ({ name }) => {
               }}
             >
               <motion.div
+<<<<<<< HEAD
                 className="position-absolute w-100 h-100 top-0 start-0 hero-scrim"
+=======
+                className="position-absolute w-100 bottom-0 py-1"
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.4)", // Darker overlay for better contrast
+                }}
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -187,6 +204,7 @@ const HeroBanner = ({ name }) => {
       </motion.button>
 
       <style jsx>{`
+<<<<<<< HEAD
         .hero-scrim {
           background: linear-gradient(
               to bottom,
@@ -224,12 +242,15 @@ const HeroBanner = ({ name }) => {
           border-color: #c79a3a;
         }
 
+=======
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
         .custom-carousel-btn {
           width: auto;
           height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
+<<<<<<< HEAD
           padding: 0 1rem;
         }
 
@@ -259,6 +280,29 @@ const HeroBanner = ({ name }) => {
 
           .carousel-item h2 {
             font-size: 1.2rem;
+=======
+        }
+
+        .custom-carousel-icon {
+          padding: 10px;
+          border-radius: 50%;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          transition: background-color 0.3s ease;
+        }
+
+        .custom-carousel-icon:hover {
+          background-color: #ffc107;
+          color: #000;
+        }
+
+        @media (max-width: 768px) {
+          .carousel-inner {
+            height: 50vh; // Adjust height for mobile
+          }
+
+          .carousel-item h2 {
+            font-size: 1.2rem; // Adjust text size for smaller screens
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
           }
         }
       `}</style>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // NOTE: this file previously had a second `module.exports` that silently
@@ -36,3 +37,42 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+=======
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+// }
+
+// module.exports = nextConfig
+
+
+
+// module.exports = {
+//   // ...
+//   revalidate: 10,
+// };
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'source.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+}
+
+module.exports = nextConfig
+
+
+
+module.exports = {
+  // ...
+  revalidate: 10,
+  
+};
+>>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
