@@ -48,23 +48,15 @@ export default function StudentCorner() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.04 }}
-                className="ui-card text-center p-4 h-100 d-flex flex-column align-items-center justify-content-start"
+                className="ui-card student-card text-center p-4 h-100 d-flex flex-column align-items-center justify-content-start"
               >
                 {/* Icon */}
-                <div
-                  className="d-flex justify-content-center align-items-center mx-auto rounded-circle mb-3"
-                  style={{
-                    width: "64px",
-                    height: "64px",
-                    background: "rgba(20, 83, 45, 0.08)",
-                    color: "var(--primary-color)",
-                  }}
-                >
+                <div className="student-icon mx-auto mb-3">
                   {item.icon}
                 </div>
 
                 {/* Label */}
-                <h6 className="fw-semibold text-dark mt-1 mb-0">
+                <h6 className="student-label fw-semibold mt-1 mb-0">
                   {item.label}
                 </h6>
               </motion.div>

@@ -937,11 +937,12 @@ nav.navbar.navbar-scrolled {
   display: block;
 }
 
-/* Gentle fade-in on scroll */
+/* Gentle fade-in on scroll — refined easing */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
@@ -949,11 +950,51 @@ nav.navbar.navbar-scrolled {
   transform: none;
 }
 
+/* Staggered card entrance: when a revealed home section enters the
+   viewport, its grid columns rise in sequence for a lively, premium feel. */
+.reveal .row > [class*="col-"] {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible .row > [class*="col-"] {
+  opacity: 1;
+  transform: none;
+}
+.reveal.is-visible .row > [class*="col-"]:nth-child(1) { transition-delay: 0.06s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(2) { transition-delay: 0.14s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(3) { transition-delay: 0.22s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(4) { transition-delay: 0.30s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(5) { transition-delay: 0.38s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(6) { transition-delay: 0.46s; }
+.reveal.is-visible .row > [class*="col-"]:nth-child(n + 7) { transition-delay: 0.52s; }
+
+/* The single notice card rises as one elegant unit */
+.reveal.is-visible .notice-grid .notice-card {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal .row > [class*="col-"] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .reveal.is-visible .notice-grid .notice-card {
+    animation: none !important;
   }
   .ui-card:hover,
   .btn-ui:hover {
@@ -1714,9 +1755,27 @@ button {
   margin-bottom: 2.75rem;
 }
 .teacher-card {
+  position: relative;
   padding: 0;
   overflow: hidden;
   text-align: center;
+}
+/* modern gold top accent on hover (shared card language) */
+.teacher-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2;
+  background: linear-gradient(90deg, var(--accent-gold), var(--primary-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.teacher-card:hover::before {
+  transform: scaleX(1);
 }
 /* uniform portrait photo, fixed ratio, cover — no more ragged heights */
 .teacher-photo {
@@ -1733,10 +1792,32 @@ button {
   object-fit: cover;
   object-position: top center;
   display: block;
-  transition: transform 0.45s ease;
+  transition: transform 0.5s ease;
 }
 .teacher-card:hover .teacher-photo img {
-  transform: scale(1.05);
+  transform: scale(1.06);
+}
+/* subtle green wash rises over the photo on hover */
+.teacher-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 58, 32, 0.32),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.teacher-card:hover .teacher-photo::after {
+  opacity: 1;
+}
+.teacher-name {
+  transition: color 0.25s ease;
+}
+.teacher-card:hover .teacher-name {
+  color: var(--primary-color);
 }
 .teacher-card-body {
   padding: 1.35rem 1.25rem 1.6rem;
@@ -1801,18 +1882,32 @@ button {
 .chairmen-card {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft-lg);
+  box-shadow: 0 1px 2px rgba(28, 28, 28, 0.04),
+    0 28px 60px -34px rgba(20, 83, 45, 0.45);
+  overflow: hidden;
 }
 .chairmen-card .col-md-5 {
   margin-bottom: 0 !important;
 }
-.chairmen-card .card {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent;
+/* full-bleed portrait that fills the whole card height */
+.chairmen-media-col {
+  padding: 0 !important;
+}
+.chairmen-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  background: var(--surface);
+}
+.chairmen-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset -24px 0 32px -24px rgba(13, 58, 32, 0.35);
 }
 .chairmen-body {
-  padding: 2rem 2.25rem !important;
+  padding: 2.5rem 2.5rem !important;
 }
 .chairmen-name {
   font-family: var(--font-heading);
@@ -1841,10 +1936,22 @@ button {
   margin: 0 0 1.25rem;
 }
 .chairmen-text {
+  position: relative;
   font-size: 1.0625rem;
   line-height: 1.95;
   color: var(--text-muted);
   margin: 0;
+  padding-left: 1.15rem;
+  border-left: 3px solid rgba(199, 154, 58, 0.55);
+}
+@media (max-width: 767.98px) {
+  .chairmen-media {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+  .chairmen-media::after {
+    box-shadow: inset 0 -24px 32px -24px rgba(13, 58, 32, 0.35);
+  }
 }
 
 /* Feature cards (বৈশিষ্ট্য / লক্ষ্য) */
@@ -1923,7 +2030,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 760px;
+  /* span the full content width so it aligns with the gallery / admission
+     sections above and below (no more stranded, narrow card) */
+  width: 100%;
   margin: 0.5rem auto 0;
 }
 
@@ -1962,10 +2071,10 @@ button {
 /* poster — fixed portrait column, cover, gentle zoom + view affordance */
 .notice-poster {
   position: relative;
-  flex: 0 0 44%;
-  max-width: 300px;
+  flex: 0 0 42%;
+  max-width: 460px;
   align-self: stretch;
-  min-height: 300px;
+  min-height: 320px;
   overflow: hidden;
   background: var(--surface);
 }
@@ -2081,20 +2190,181 @@ button {
 }
 
 /* =====================================================================
+   COURSES (কোর্স সমূহ) — modern numbered cards
+   ===================================================================== */
+.course-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  /* top-align so every card lines up even when a description is empty */
+  justify-content: flex-start;
+}
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--primary-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.course-card:hover::before {
+  transform: scaleX(1);
+}
+.course-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  background: rgba(20, 83, 45, 0.08);
+  border: 1px solid rgba(20, 83, 45, 0.12);
+  margin-bottom: 1rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.course-card:hover .course-number {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 10px 22px -8px rgba(20, 83, 45, 0.55);
+}
+.course-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--secondary-color);
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+.course-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* =====================================================================
+   STUDENT CORNER (শিক্ষার্থীর কর্ণার) — modern action tiles
+   ===================================================================== */
+.student-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.student-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--primary-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.student-card:hover {
+  box-shadow: 0 1px 2px rgba(28, 28, 28, 0.05),
+    0 22px 44px -22px rgba(20, 83, 45, 0.5);
+  border-color: rgba(20, 83, 45, 0.2);
+}
+.student-card:hover::before {
+  transform: scaleX(1);
+}
+.student-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: rgba(20, 83, 45, 0.08);
+  color: var(--primary-color);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.student-card:hover .student-icon {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 10px 22px -8px rgba(20, 83, 45, 0.55);
+}
+.student-label {
+  color: var(--text-color);
+  font-size: 0.97rem;
+  transition: color 0.25s ease;
+}
+.student-card:hover .student-label {
+  color: var(--primary-color);
+}
+
+/* =====================================================================
    ADMISSION (ভর্তি তথ্য)  (presentation layer only)
    ===================================================================== */
 .admission-card {
-  padding: 1.85rem 1.65rem;
+  position: relative;
+  padding: 2rem 1.75rem;
+  overflow: hidden;
+}
+/* modern gold top accent that grows in on hover */
+.admission-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--primary-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.admission-card:hover::before {
+  transform: scaleX(1);
 }
 .admission-card-title {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: var(--secondary-color);
   line-height: 1.4;
-  margin: 0 0 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.95rem;
+  position: relative;
+}
+.admission-card-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+}
+.admission-card-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 48px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-gold), rgba(199, 154, 58, 0.25));
+  z-index: 1;
 }
 .admission-list {
   list-style: none;
@@ -2103,26 +2373,36 @@ button {
 }
 .admission-list li {
   display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
+  align-items: center;
+  gap: 0.85rem;
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--text-color);
-  margin-bottom: 0.95rem;
+  margin-bottom: 1.05rem;
 }
 .admission-list li:last-child {
   margin-bottom: 0;
 }
+/* icon chips — modern rounded badges */
 .admission-ic {
   flex-shrink: 0;
-  margin-top: 4px;
-  width: 18px;
-  height: 18px;
+  width: 36px;
+  height: 36px;
+  padding: 9px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(20, 83, 45, 0.08);
   color: var(--primary-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.admission-card:hover .admission-ic {
+  background: rgba(199, 154, 58, 0.16);
+  color: var(--primary-dark);
 }
 /* the ✅ items already carry their emoji marker; keep them tidy */
 .admission-list--check li {
   color: var(--text-color);
+  align-items: flex-start;
 }
 
 /* prominent contact call-out bar */

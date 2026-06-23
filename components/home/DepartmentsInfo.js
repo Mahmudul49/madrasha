@@ -32,29 +32,14 @@ const DepartmentsInfo = () => {
           {departments.map((dept, index) => (
             <div className="col-6 col-md-3" key={index}>
               <motion.div
-                whileHover={{ y: -4 }}
-                className="ui-card p-4 d-flex flex-column justify-content-center align-items-center"
-                style={{ minHeight: "180px" }}
+                whileHover={{ y: -5 }}
+                className="ui-card course-card d-flex flex-column align-items-center"
               >
-                <span
-                  aria-hidden="true"
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "999px",
-                    background: "rgba(20, 83, 45, 0.08)",
-                    color: "var(--primary-color)",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: 700,
-                    marginBottom: "0.75rem",
-                  }}
-                >
+                <span className="course-number" aria-hidden="true">
                   {index + 1}
                 </span>
-                <h5 className="fw-bold" style={{ color: "var(--secondary-color)" }}>{dept.title}</h5>
-                <p className="mt-1 mb-0">{dept.desc}</p>
+                <h5 className="course-title">{dept.title}</h5>
+                <p className="course-desc">{dept.desc}</p>
               </motion.div>
             </div>
           ))}

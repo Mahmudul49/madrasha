@@ -53,7 +53,6 @@
 
 
 import React from "react";
-import { Card } from "react-bootstrap";
 import Image from "next/image";
 import OverViewImage2 from "/public/chairmen.jpeg";
 
@@ -64,27 +63,20 @@ function ChairmenMesage() {
   return (
     <section className="chairmen-section">
       <div className="mx-auto">
-        <div className="row align-items-center overflow-hidden bg-white chairmen-card">
-          {/* Image Section */}
-           
-
-
-
-            {/* Left Image Section */}
-        <div className=" col-md-5 col-12 mb-3">
-          <Card className="shadow-sm rounded overflow-hidden">
-            <div style={{ width: "100%", height: "470px", position: "relative" }}>
+        <div className="row align-items-stretch overflow-hidden bg-white chairmen-card g-0">
+          {/* Left Image Section — full-bleed, fills card height */}
+          <div className="col-md-5 col-12 chairmen-media-col">
+            <div className="chairmen-media">
               <Image
                 src={OverViewImage2}
                 alt="Chairman"
-                layout="fill"
-                objectFit="cover"
-                className="rounded p-3"
+                fill
+                sizes="(max-width: 768px) 100vw, 42vw"
+                style={{ objectFit: "cover", objectPosition: "top center" }}
                 priority
               />
             </div>
-          </Card>
-        </div>
+          </div>
 
           {/* Text Section */}
           <div className="col-md-7 col-sm-12 chairmen-body">
