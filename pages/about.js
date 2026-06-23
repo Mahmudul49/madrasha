@@ -129,27 +129,11 @@ import ChairmenMesage from "@/components/about/ChairmenMesage";
 
 // ✅ Custom Card Components
 function Card({ children, className = "" }) {
-<<<<<<< HEAD
   return <div className={`ui-card about-card ${className}`}>{children}</div>;
 }
 
 function CardContent({ children, className = "" }) {
   return <div className={`about-card-body ${className}`}>{children}</div>;
-=======
-  return (
-    <div
-      className={`bg-white rounded-2xl shadow-lg border border-green-100 p-6 
-      transform transition-all hover:scale-[1.02] hover:shadow-xl 
-      duration-300 ease-in-out ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-function CardContent({ children, className = "" }) {
-  return <div className={`p-4 md:p-8 ${className}`}>{children}</div>;
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 }
 
 export default function MadrasahPage() {
@@ -158,26 +142,15 @@ export default function MadrasahPage() {
       {/* Hero Section */}
       <HeroBanner name="/পরিচিতি" />
 
-<<<<<<< HEAD
       <div className="about-page section section--surface">
         <div className="container-1200 about-stack">
           {/* Title */}
           <span className="section-ornament d-block" aria-hidden="true"></span>
-=======
-      <div className="p-2 m-2 min-h-screen bg-gradient-to-tr from-green-50 via-white to-green-50 text-gray-800 px-4 md:px-10 py-12">
-        <div className="my-3 py-3 max-w-7xl mx-auto space-y-20">
-          {/* Title */}
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
           <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-<<<<<<< HEAD
           className="about-title display-6 fw-bold text-center"
-=======
-          className="display-6 my-2 py-2 fw-bold text-success text-4xl md:text-5xl font-extrabold text-center text-green-800 drop-shadow-lg py-1"
-          // className="display-5 fw-bold text-success text-center border-bottom border-success d-inline-block pb-2"
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
         >
           তাকওয়া নূরানী ও হাফেজিয়া মাদ্রাসা
         </motion.h1>
@@ -197,16 +170,11 @@ export default function MadrasahPage() {
             >
               <Card>
                 <CardContent>
-<<<<<<< HEAD
                   <h2 className="about-card-title">
-=======
-                  <h2 className="text-2xl md:text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-200 pb-3">
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
                     {section.title}
                   </h2>
 
                   {typeof section.content === "string" ? (
-<<<<<<< HEAD
                     <p className="about-card-text">
                       {section.content}
                     </p>
@@ -214,15 +182,6 @@ export default function MadrasahPage() {
                     <ul className="about-list">
                       {section.content.map((item, idx) => (
                         <li key={idx}>
-=======
-                    <p className="text-lg leading-relaxed text-gray-700 whitespace-pre-line">
-                      {section.content}
-                    </p>
-                  ) : (
-                    <ul className="text-lg leading-relaxed list-disc list-inside space-y-2 text-gray-700">
-                      {section.content.map((item, idx) => (
-                        <li key={idx} className="hover:text-green-600 transition-colors">
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
                           {item}
                         </li>
                       ))}

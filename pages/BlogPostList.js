@@ -18,13 +18,19 @@ export default function BlogPostList({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await res.json();
-
-  return {
-    props: {
-      posts,
-    },
-    revalidate: 10,
-  };
+  try {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const posts = await res.json();
+    return {
+      props: {
+        posts,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    return {
+      props: { posts: [] },
+      revalidate: 10,
+    };
+  }
 }

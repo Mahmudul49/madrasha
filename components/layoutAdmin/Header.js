@@ -4,11 +4,11 @@ import { FaRegUserCircle } from "react-icons/fa";
 import CustomDropdown from "../admin/common/CustomDropdown";
 
 const Header = () => {
-  const userInfo = localStorage.getItem("user");
+  // Guard browser-only API so the page can be prerendered on the server.
+  const userInfo =
+    typeof window !== "undefined" ? localStorage.getItem("user") : null;
   const options = [userInfo, "logout"];
-  console.log({ userInfo });
   const { token, email, items, status } = useAuth();
-  console.log("dasboard data from login:", email, status, token, items);
 
   const menuHandler = () => {
     const sidebar = document.querySelector(".sidebar");

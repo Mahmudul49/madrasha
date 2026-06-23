@@ -83,7 +83,8 @@ const ordersLi = ["orders"];
 
 const Sidebar = () => {
   const router = useRouter();
-  const userInfo = localStorage.getItem("user");
+  const userInfo =
+    typeof window !== "undefined" ? localStorage.getItem("user") : null;
   const optionsProfile = [userInfo, "logout"];
   const [modalShow, setModalShow] = useState(false);
   const menuHandler = () => {

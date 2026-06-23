@@ -46,17 +46,9 @@ const ContactForm = () => {
         axios
           .post(`${apiUrl.apiRootUrl}/api/v1/contact`, formData)
           .then((response) => {
-<<<<<<< HEAD
             toast.success("Form submitted successfully!");
           })
           .catch((error) => {
-=======
-            console.log(response);
-            toast.success("Form submitted successfully!");
-          })
-          .catch((error) => {
-            console.log(error);
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
             toast.error(error);
           });
       } else {
@@ -115,15 +107,9 @@ const ContactForm = () => {
   
           <Form.Group controlId="message" className="mb-3">
             <Form.Control
-<<<<<<< HEAD
               className="p-3"
               as="textarea"
               rows={5}
-=======
-              className="p-4"
-              as="textarea"
-              rows={10}
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
               name="message"
               placeholder="আপনার বার্তা"
   

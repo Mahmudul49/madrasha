@@ -15,31 +15,40 @@ import SliderImg from "public/slider-2.jpg";
 import RouteNavSlider from "@/components/common/RouteNavSlider";
 import HeroBanner from "@/components/common/Banner";
 export const getStaticPaths = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await res.json();
-  const paths = await data.map((post) => {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await res.json();
+    const paths = await data.map((post) => {
+      return {
+        params: { blogId: post?.id.toString() },
+      };
+    });
     return {
-      params: { blogId: post?.id.toString() },
+      paths,
+      fallback: "blocking",
     };
-  });
-  return {
-    paths,
-    fallback: false,
-  };
+  } catch (error) {
+    // Don't fail the build; render remaining paths on-demand.
+    return { paths: [], fallback: "blocking" };
+  }
 };
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.blogId}`
-  );
-  // console.log(res);
-  const data = await res.json();
-  console.log("product data is :", data);
-
-  return {
-    props: { data },
-    revalidate: 10,
-  };
+  try {
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${params.blogId}`
+    );
+    const data = await res.json();
+    return {
+      props: { data },
+      revalidate: 10,
+    };
+  } catch (error) {
+    return {
+      props: { data: null },
+      revalidate: 10,
+    };
+  }
 };
 
 function BlogDetails({ data }) {

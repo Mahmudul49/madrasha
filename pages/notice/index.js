@@ -23,12 +23,20 @@ const NoticeShowcase = dynamic(
 //   revalidate: 3;
 // };
 export const getStaticProps = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await res.json();
-  return {
-    props: { data },
-    revalidate: 10,
-  };
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await res.json();
+    return {
+      props: { data },
+      revalidate: 10,
+    };
+  } catch (error) {
+    // Never fail the build on a transient fetch error.
+    return {
+      props: { data: [] },
+      revalidate: 10,
+    };
+  }
 };
 
 function TodayDeals({ data }) {

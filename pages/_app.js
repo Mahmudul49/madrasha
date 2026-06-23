@@ -16,7 +16,6 @@ import Head from "next/head";
 import Script from "next/script";
 import { ChakraProvider } from "@chakra-ui/react";
 import ThreeDotsWave from "@/components/common/ThreeDot";
-<<<<<<< HEAD
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthProvider from "@/lib/contexts/AuthProvider";
@@ -53,29 +52,13 @@ const notoSerifBengali = Noto_Serif_Bengali({
   display: "swap",
 });
 const fontVars = `${playfair.variable} ${inter.variable} ${hindSiliguri.variable} ${notoSerifBengali.variable}`;
-=======
-import { useEffect, useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AuthProvider from "@/lib/contexts/AuthProvider";
-import LayoutAdmin from "@/components/layoutAdmin/Layoutt";
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
 
 const queryClient = new QueryClient();
 // import { AnimatePresence } from "framer-motion";
 // import { AnimatePresence } from "framer-motion";
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-<<<<<<< HEAD
   // Pages render immediately — no artificial loading delay.
   const [isLoading, setIsLoading] = useState(false);
-=======
-  const [isLoading, setIsLoading] = useState(true);
-  //test
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
   //const getLayout = Component.getLayout || ((page) => page);
   //console.log("page is",getLayout)
   if (Component.getLayout) {
@@ -99,14 +82,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
         <Meta />
       </Head>
-<<<<<<< HEAD
-=======
-      {/* font awesome   */}
-      <Script
-        src="https://kit.fontawesome.com/61a6132c09.js"
-        crossOrigin="anonymous"
-      ></Script>
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
       {/* Bootstrap Bundle with Popper   */}
       <Script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -121,25 +96,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       {isLoading ? (
         <ThreeDotsWave />
       ) : (
-        // <CartProvider>
-        //   <QueryClientProvider client={queryClient}>
-        //     <ChakraProvider>
-              <AuthProvider>
-<<<<<<< HEAD
-                <div className={`${fontVars} app-fonts`}>
-                  <Layout>
-                    <Component {...pageProps} />
-                  </Layout>
-                </div>
-=======
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
-              </AuthProvider>
-        //     </ChakraProvider>
-        //   </QueryClientProvider>
-        // </CartProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <div className={`${fontVars} app-fonts`}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </div>
+          </AuthProvider>
+        </QueryClientProvider>
       )}
 
       {/* </CartProvider>

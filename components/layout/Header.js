@@ -19,11 +19,6 @@ function Header() {
     const sidebar = document.querySelector(".offcanvas");
     const body = document.querySelector("body");
 
-<<<<<<< HEAD
-=======
-    console.log({ sidebar });
-
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
     const isCollapse = sidebar.classList.contains("show");
     const offcanvasDiv = document.querySelector(".offcanvas-backdrop");
     const isShow = offcanvasDiv.classList.contains("show");
@@ -70,11 +65,7 @@ function Header() {
           sticky="top"
           // bg="light"
           expand={expand}
-<<<<<<< HEAD
           className={`bg-light site-navbar${scroll ? " navbar-scrolled" : ""}`}
-=======
-          className="bg-light"
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
         >
           <div className="col-lg-5  col-sm-3  col-3">
             <Nav

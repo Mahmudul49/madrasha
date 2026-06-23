@@ -37,7 +37,9 @@ const stagger = {
 
 const ProductCarousel = ({ data }) => {
   const [modalShow, setModalShow] = useState(false);
-  const [bodyWidth, setBodyWidth] = useState(window.innerWidth);
+  const [bodyWidth, setBodyWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
   const [productId, setProductId] = useState(null);
   
   const productDetails = (id) => {

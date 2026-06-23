@@ -62,15 +62,9 @@ const visionDescription =
 
 function ChairmenMesage() {
   return (
-<<<<<<< HEAD
     <section className="chairmen-section">
       <div className="mx-auto">
         <div className="row align-items-center overflow-hidden bg-white chairmen-card">
-=======
-    <section className="p-2 py-10   2 bg-gradient-to-r from-gray-50 to-gray-100">
-      <div className="mx-auto">
-        <div className="row align-items-center shadow-lg rounded-3 overflow-hidden bg-white">
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
           {/* Image Section */}
            
 
@@ -93,7 +87,6 @@ function ChairmenMesage() {
         </div>
 
           {/* Text Section */}
-<<<<<<< HEAD
           <div className="col-md-7 col-sm-12 chairmen-body">
             <span className="section-ornament is-start d-block" aria-hidden="true"></span>
             <h2 className="chairmen-name">
@@ -106,19 +99,6 @@ function ChairmenMesage() {
               পরিচালকের বাণী
             </h5>
             <p className="chairmen-text text-justify">
-=======
-          <div className="col-md-7 col-sm-12 px-5   my-2 py-2">
-            <h2 className="text-3xl font-extrabold text-gray-800  my-2 py-2">
-              মাদ্রাসা পরিচালক ও সভাপতি
-            </h2>
-            <h5 className="my-1 text-xl font-semibold text-gray-600 my-3">
-              মোঃ ফয়জুল ইসলাম
-            </h5>
-            <h5 className=" text-lg font-bold text-green-700 my-4">
-              পরিচালকের বাণী
-            </h5>
-            <p className="py-1 text-base leading-relaxed text-gray-700 text-justify">
->>>>>>> c3a496bab4a5ab421806baf221c6f2318361716b
               {visionDescription}
             </p>
           </div>
